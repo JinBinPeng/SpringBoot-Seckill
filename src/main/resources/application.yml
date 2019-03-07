@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/miaosha?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 1997
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    port: 6379
+    host: localhost
+    timeout: 10
+    jedis:
+      pool:
+        max-idle: 500
+        max-wait: 500
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 10  #消费者数量
+        max-concurrency: 10
+        prefetch: 1
+        auto-startup: true
+        default-requeue-rejected: true
+        retry:
+          enabled: true
+          max-attempts: 3
+          multiplier: 1.0
+          initial-interval: 1000
+          max-interval: 10000
+  thymeleaf:
+    cache: false
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+debug: true
